@@ -25,10 +25,10 @@ htmlcov/
 .env
 *.env
 
-# Datos y artefactos
+# Data
 data/processed/
 *.parquet
-# si generas datos sintéticos grandes:
+# Ignore all CSV files in raw data except README.md
 data/raw/*.csv
 !data/raw/README.md
 logs/

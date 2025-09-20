@@ -26,16 +26,13 @@ def basic_schema(df: pd.DataFrame) -> None:
 
 
 def normalize_types(df):
-    import pandas as pd
 
     df = df.copy()
 
-    # strings limpias (si existen)
     for c in ("date", "product", "price", "quantity", "customer", "region"):
         if c in df.columns:
             df[c] = df[c].astype(str).str.strip()
 
-    # fecha ISO YYYY-MM-DD
     df["date"] = pd.to_datetime(
         df["date"].astype(str).str.slice(0, 10),
         format="%Y-%m-%d",
@@ -43,13 +40,11 @@ def normalize_types(df):
         utc=True,
     )
 
-    # números robustos e idempotentes
     df["price"] = pd.to_numeric(
         df["price"].astype(str).str.replace(",", ".", regex=False), errors="coerce"
     )
     df["quantity"] = pd.to_numeric(df["quantity"].astype(str), errors="coerce")
 
-    # revenue siempre como float
     df["revenue"] = (df["price"] * df["quantity"]).astype("float64")
     return df
 

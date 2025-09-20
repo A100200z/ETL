@@ -1,4 +1,3 @@
-# src/sales_etl/etl.py
 import pandas as pd
 from pathlib import Path
 from .validators import basic_schema, normalize_types, drop_bad_rows
@@ -7,7 +6,6 @@ from .validators import basic_schema, normalize_types, drop_bad_rows
 def _read_one(p):
     import re
 
-    # intento normal
     try:
         df = pd.read_csv(
             p,
@@ -17,7 +15,7 @@ def _read_one(p):
             dtype=str,
             keep_default_na=False,
         )
-        # si ya viene bien, úsalo
+
         cols = {c.strip().lower() for c in df.columns}
         if {"date", "product", "price", "quantity"}.issubset(cols) and df.get(
             "price"
@@ -26,8 +24,6 @@ def _read_one(p):
     except Exception:
         pass
 
-    # Fallback: línea “impresa” tipo:
-    # 0  2024-02-02   Widget   81.0   11  cust044  APAC  891.0
     raw = pd.read_csv(p, header=None, names=["line"], dtype=str, encoding="utf-8-sig")
     pat = re.compile(
         r"^\s*\d+\s+(\d{4}-\d{2}-\d{2})\s+([A-Za-z]+)\s+(\d+(?:\.\d+)?)\s+(\d+)\s+(cust\d+)\s+([A-Za-z]+)\s+(\d+(?:\.\d+)?)\s*$"
@@ -39,7 +35,7 @@ def _read_one(p):
             rows.append(m.groups())
     if not rows:
         raise ValueError(
-            "No pude parsear el archivo. Sube un CSV real o ajusta el regex."
+            "CSV file does not match expected format and could not be parsed"
         )
     df = pd.DataFrame(
         rows,

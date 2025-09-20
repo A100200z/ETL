@@ -1,4 +1,3 @@
-# fix_csv.py
 import re, sys, csv
 
 if len(sys.argv) < 3:
@@ -14,31 +13,35 @@ if "," in lines[0]:
     header = [h.strip() for h in lines[0].split(",")]
     data = lines[1:]
 else:
-    header = ["date","product","price","quantity","customer","region","revenue"]
+    header = ["date", "product", "price", "quantity", "customer", "region", "revenue"]
     data = lines
 
-pat = re.compile(r"""
-^\s*\d+\s+                          # idx
-(\d{4}-\d{2}-\d{2})\s+              # date
-([A-Za-z][\w-]*)\s+                 # product (1 palabra)
-(\d+(?:\.\d+)?)\s+                  # price
-(\d+)\s+                            # quantity
-(\S+)\s+                            # customer
-(\S+)\s+                            # region
-(\d+(?:\.\d+)?)\s*$                 # revenue
-""", re.X)
+pat = re.compile(
+    r"""
+^\s*\d+\s+ # idx
+(\d{4}-\d{2}-\d{2})\s+ # date
+([A-Za-z][\w-]*)\s+ # product (allow hyphen)
+(\d+(?:\.\d+)?)\s+ # price
+(\d+)\s+ # quantity
+(\S+)\s+ # customer
+(\S+)\s+ # region
+(\d+(?:\.\d+)?)\s*$ # revenue
+""",
+    re.X,
+)
 
 rows = []
 for s in data:
-    if "," in s:  # ya viene en csv real
+    if "," in s:
         parts = [p.strip() for p in s.split(",")]
         if len(parts) == 7:
-            rows.append(parts); continue
+            rows.append(parts)
+            continue
     m = pat.match(s.strip().strip("'").strip('"'))
     if m:
         rows.append(list(m.groups()))
         continue
-    # fallback por split de espacios quitando índice
+    # try space-separated
     parts = s.split()
     if parts and parts[0].isdigit() and len(parts) >= 8:
         rows.append(parts[1:8])
