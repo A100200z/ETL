@@ -1,0 +1,41 @@
+# venv
+.venv/
+env/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.dist/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# IDE/OS
+.vscode/
+.idea/
+.DS_Store
+
+# Config/secrets
+.env
+*.env
+
+# Datos y artefactos
+data/processed/
+*.parquet
+# si generas datos sintéticos grandes:
+data/raw/*.csv
+!data/raw/README.md
+logs/
+*.log
+
+echo "ENV/" >> .gitignore
+echo ".venv/" >> .gitignore
+echo "__pycache__/" >> .gitignore
+echo "data/processed/" >> .gitignore
+echo "*.parquet" >> .gitignore

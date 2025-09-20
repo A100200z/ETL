@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Install deps
+        run: |
+          python -m pip install -U pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Generate sample data
+        env: { PYTHONPATH: src }
+        run: python -m sales_etl.cli gen-sample --out data/raw/sales_data.csv --n 200
+
+      - name: Run ETL
+        env: { PYTHONPATH: src }
+        run: python -m sales_etl.cli etl data/raw/sales_data.csv --out data/processed/sales.parquet
+
+      - name: KPIs smoke test
+        env: { PYTHONPATH: src }
+        run: python -m sales_etl.cli kpis data/processed/sales.parquet
+
+      - name: Unit tests
+        run: pytest -q
+
+      - name: Upload parquet artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sales-parquet
+          path: data/processed/sales.parquet
