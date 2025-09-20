@@ -26,7 +26,6 @@ def basic_schema(df: pd.DataFrame) -> None:
 
 
 def normalize_types(df):
-
     df = df.copy()
 
     for c in ("date", "product", "price", "quantity", "customer", "region"):

@@ -1,4 +1,6 @@
-import re, sys, csv
+import re
+import sys
+import csv
 
 if len(sys.argv) < 3:
     print("uso: python fix_csv.py <in> <out>")

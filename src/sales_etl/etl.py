@@ -61,7 +61,7 @@ def read_many(paths: list[str]) -> pd.DataFrame:
     date = df["date"]
     try:
         date = date.dt.tz_convert(None)
-    except:
+    except (AttributeError, TypeError, ValueError):
         pass
     df["date_month"] = date.dt.to_period("M").dt.to_timestamp()
     return df

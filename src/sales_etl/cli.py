@@ -37,8 +37,7 @@ def kpis(parquet: str):
 
 @app.command()
 def gen_sample(out: str = "data/raw/sales_data.csv", n: int = 500):
-    from pathlib import Path
-    import numpy as np, pandas as pd
+    import pandas as pd
 
     rng = np.random.default_rng(42)
     dates = pd.date_range("2024-01-01", "2025-01-01", freq="D")

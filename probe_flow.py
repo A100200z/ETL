@@ -7,9 +7,13 @@ print("raw dtypes:", df.dtypes.to_dict())
 print(df.head().to_string())
 
 n = normalize_types(df)
-print({"date_NaT": int(n["date"].isna().sum()),
-       "price_NaN": int(n["price"].isna().sum()),
-       "qty_NaN": int(n["quantity"].isna().sum())})
+print(
+    {
+        "date_NaT": int(n["date"].isna().sum()),
+        "price_NaN": int(n["price"].isna().sum()),
+        "qty_NaN": int(n["quantity"].isna().sum()),
+    }
+)
 f = drop_bad_rows(n)
 print("after_drop:", f.shape)
 print(f.head().to_string())
