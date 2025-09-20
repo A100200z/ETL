@@ -1,8 +1,8 @@
 [![CI](https://github.com/Chilanguiux/ETL/actions/workflows/ci.yml/badge.svg)](https://github.com/Chilanguiux/ETL/actions/workflows/ci.yml)
 
-# Sales Pipeline — ETL + KPIs + API
+# Sales Pipeline - ETL + KPIs + API
 
-ETL in Python 3.x using Pandas/NumPy. Cleans, transforms, validates, and aggregates sales data. Exposes KPIs via FastAPI.
+ETL in Python 3 using Pandas/NumPy. Cleans, transforms, validates, and aggregates sales data. Exposes KPIs via FastAPI.
 
 ### Quick start - Create and activate a virtual env
 
